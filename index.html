@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalho Consumo de API</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-danger text-center p-3">TRABALHO API 3º SEMESTRE</h1>
+                <form id="formulario">
+                    <div class="form-group">
+                        <input type="text" class="form-control form-control-sm" placeholder="ID" id="id" disabled>
+                    </div>
+                    <div class="form-group">
+                        <input autocomplete="off" type="text" class="form-control form-control-sm" placeholder="SEU NOME" id="nome">
+                    </div>
+                    <div class="font-weight-bold" id="ErroNome"></div>
+                    <div class="form-group">
+                        <input autocomplete="off" type="email" class="form-control form-control-sm" placeholder="SEU E-MAIL" id="email">
+                    </div>
+                    <div class="font-weight-bold" id="ErroEmail"></div>
+                    <div class="form-group">
+                        <select id="tipo" class="form-control form-control-sm">
+                            <option value="">SELECIONE O TIPO</option>
+                            <option value="FISICA">FISICA</option>
+                            <option value="JURIDICA">JURIDICA</option>
+                        </select>
+                    </div>
+                    <div class="font-weight-bold" id="ErroTipo"></div>
+                    <div class="form-group">
+                        <input type="hidden" id="acao" value="incluir">
+                        <button type="button" id="btnGravar" class="btn btn-success">Gravar</button>
+                        <button type="button" id="btnLimpar" class="btn btn-danger">Limpar</button>
+                        <button type="button" id="btnCarregar" class="btn btn-primary">Carregar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr class="table-active">
+                            <th scope="col">ID</th>
+                            <th scope="col">NOME</th>
+                            <th scope="col">EMAIL</th>
+                            <th scope="col">TIPO</th>
+                            <th scope="col">AÇÃO</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela">
+                        <tr>
+                            <td align="center" colspan="4">SEM DADOS</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</html>
