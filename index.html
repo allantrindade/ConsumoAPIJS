@@ -9,11 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
 </head>
 
-<body>
-    <div class="container">
+<body class="bg-light">
+    <div class="container-fluid">
+        <h1 class="text-success text-center p-3">TRABALHO API 3º SEMESTRE</h1>
         <div class="row">
-            <div class="col-md-12">
-                <h1 class="text-danger text-center p-3">TRABALHO API 3º SEMESTRE</h1>
+            <div class="col-md-6 mt-4">
                 <form id="formulario">
                     <div class="form-group">
                         <input type="text" class="form-control form-control-sm" placeholder="ID" id="id" disabled>
@@ -23,7 +23,7 @@
                     </div>
                     <div class="font-weight-bold" id="ErroNome"></div>
                     <div class="form-group">
-                        <input autocomplete="off" type="email" class="form-control form-control-sm" placeholder="SEU E-MAIL" id="email">
+                        <input autocomplete="off" type="text" class="form-control form-control-sm" placeholder="SEU E-MAIL" id="email">
                     </div>
                     <div class="font-weight-bold" id="ErroEmail"></div>
                     <div class="form-group">
@@ -42,11 +42,9 @@
                     </div>
                 </form>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table table-hover">
-                    <thead>
+            <div class="col-md-6 mt-4">
+                <table class="table table-hover table-bordered">
+                    <thead class="thead">
                         <tr class="table-active">
                             <th scope="col">ID</th>
                             <th scope="col">NOME</th>

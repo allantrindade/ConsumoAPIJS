@@ -26,7 +26,7 @@ const Carregar = () => {
                     '<td>' + pessoa.EMAIL + '</td>' +
                     '<td>' + pessoa.TIPO + '</td>' +
                     '<td>' +
-                    '<a href="javascript:void(0)" id="btn-editar-' + pessoa.ID + '" class="btn btn-primary">Editar</a>' +
+                    '<a href="javascript:void(0)" id="btn-editar-' + pessoa.ID + '" class="btn btn-primary">Editar</a>' + ' ' +
                     '<a href="javascript:void(0)" id="btn-excluir-' + pessoa.ID + '" class="btn btn-danger">Excluir</a>' +
                     '</td>' +
                     '</tr>'
@@ -105,7 +105,15 @@ const Gravar = () => {
         ErroEmail.style.color = 'red'
         ErroTipo.innerHTML = ''
         email.focus()
-        return false       
+        return false
+    }
+    else if (email.value.indexOf('@') == -1 || email.value.indexOf('.') == -1 ){
+        ErroNome.innerHTML = ''
+        ErroEmail.innerHTML = 'Por favor, informe um E-MAIL válido!<BR><BR>'
+        ErroEmail.style.color = 'red'
+        ErroTipo.innerHTML = ''
+        email.focus()
+        return false        
     }
     else if (tipo.value.length < 1){
         ErroNome.innerHTML = ''
