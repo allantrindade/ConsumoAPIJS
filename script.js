@@ -12,7 +12,6 @@ const Limpar = () => {
     ErroTipo.innerHTML = ''
 
 }
-
 //Função para Carregar Todos as Pessoas Através de uma API
 const Carregar = () => {
     fetch(URL_BASE)
@@ -26,8 +25,8 @@ const Carregar = () => {
                     '<td>' + pessoa.EMAIL + '</td>' +
                     '<td>' + pessoa.TIPO + '</td>' +
                     '<td>' +
-                    '<a href="javascript:void(0)" id="btn-editar-' + pessoa.ID + '" class="btn btn-primary">Editar</a>' + ' ' +
-                    '<a href="javascript:void(0)" id="btn-excluir-' + pessoa.ID + '" class="btn btn-danger">Excluir</a>' +
+                    '<button type="button" id="btn-editar-' + pessoa.ID + '" class="btn btn-primary">Editar</button>' + ' ' +
+                    '<button type="button" id="btn-excluir-' + pessoa.ID + '" class="btn btn-danger">Excluir</button>' +
                     '</td>' +
                     '</tr>'
             })                             
@@ -85,7 +84,7 @@ const Deletar = i_d => {
 //Função Para Gravar Dados Alterado
 const GravarDados = () => {
     acao.value == 'incluir' ? Gravar() : Alterar()
-    acao.value = 'incluir'
+    acao.value = 'editar'
 }
 
 
@@ -153,6 +152,7 @@ const Alterar = () => {
             if (response.status == 202) {
                 CarregarReg()
                 Limpar()
+                Carregar()
             }
             return response.json()
         })
