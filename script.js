@@ -2,8 +2,7 @@
 const URL_BASE = 'https://wllsistemas.com.br/api/v3/cliente/'
 
 //Função Para Limpar Todos os Campos
-const Limpar = () => {
-    id.value = ''
+const Limpar = () => {id.value = ''
     nome.value = ''
     email.value = ''
     tipo.value = ''
@@ -12,8 +11,16 @@ const Limpar = () => {
     ErroTipo.innerHTML = ''
     acao.value = 'incluir'
 }
+
+//Função para iniciar o loader
+const AbrirLoader = () => loader.innerHTML = "AGUARDE, CARREGANDO DADOS ... <i class='spinner-border text-success'></i>"
+
+//Função para finalizar o loader
+const FecharLoader = () => loader.innerHTML = ''
+
 //Função para Carregar Todos as Pessoas Através de uma API
 const Carregar = () => {
+    AbrirLoader()
     fetch(URL_BASE, { cache: 'reload' })
         .then(response => response.json())
         .then(json => {
@@ -47,6 +54,7 @@ const Carregar = () => {
                 })
 
             })
+          FecharLoader()
         })
 }
 
@@ -61,6 +69,7 @@ const Deletar = i_d => {
     })
     .then((willDelete) => {
         if (willDelete) {
+            AbrirLoader()
 	        fetch(URL_BASE + i_d, {
             method:'DELETE',
             cache:'reload'
@@ -71,6 +80,7 @@ const Deletar = i_d => {
         })
         .then(json => {
             Limpar()
+            FecharLoader()
             swal("ID " + i_d + " " + json.mensagem, {
                 icon: "success",
             })
@@ -90,6 +100,7 @@ const GravarDados = () => {
 //Função Para Gravar Uma Pessoa
 const Gravar = () => {
      if (ValidarCampos()){
+        AbrirLoader()
         fetch(URL_BASE, {
             cache: 'reload',
             method: 'POST',
@@ -103,7 +114,8 @@ const Gravar = () => {
             }
             return response.json()
         })
-            .then(json => {      
+            .then(json => {
+                FecharLoader()      
                 swal("Bom trabalho!",json.mensagem, "success")
             })
     }
@@ -112,6 +124,7 @@ const Gravar = () => {
 //Função Para Alterar um Registro
 const Alterar = () => {
     if (ValidarCampos()){
+        AbrirLoader()
     fetch(URL_BASE, {
         cache: 'reload',
         method: 'PUT',
@@ -126,6 +139,7 @@ const Alterar = () => {
             return response.json()
         })
         .then(json => {
+            FecharLoader() 
             swal("Bom trabalho!",json.mensagem, "success")
         })
     }
@@ -133,6 +147,7 @@ const Alterar = () => {
 
 //Função Para Recarregar as Informações de uma Pessoa no Input para Edição de Dados
 const CarregarReg = i_d => {
+    AbrirLoader() 
     fetch(URL_BASE + i_d, { cache: 'reload' })
         .then(response => response.json())
         .then(pessoa => {
@@ -141,7 +156,9 @@ const CarregarReg = i_d => {
             email.value = pessoa[0].EMAIL
             tipo.value = pessoa[0].TIPO
             acao.value = 'editar'
+            FecharLoader() 
         })
+    
  }
 
  // Função para validar se os campos não estão vazios, caso esteja retorna false caso contrário retorna true
